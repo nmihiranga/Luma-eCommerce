@@ -20,7 +20,6 @@ public class LumaTest {
     private WebDriver driver;
     String baseUrl;
 
-
     @BeforeTest
     public void setup(){
         driver = new ChromeDriver();
@@ -32,7 +31,7 @@ public class LumaTest {
     }
 
     //scroll
-    @Test
+    @Test(priority = 0)
     void scroll() throws InterruptedException {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollTo(0,document.body.scrollHeight)");
@@ -42,7 +41,7 @@ public class LumaTest {
     }
 
     //create account
-    @Test
+    @Test(priority = 1)
     void registration() throws InterruptedException {
         driver.findElement(By.linkText("Create an Account")).click();
         JavascriptExecutor js = (JavascriptExecutor) driver;
@@ -56,8 +55,18 @@ public class LumaTest {
         driver.findElement(By.xpath("//*[@id=\"form-validate\"]/div/div[1]/button/span")).click();
     }
 
+    //sign in
+    @Test(priority = 2)
+    void signIn() throws InterruptedException {
+        driver.findElement(By.linkText("Sign In")).click();
+        driver.findElement(By.id("email")).sendKeys("test1@testmail.com");
+        driver.findElement(By.id("pass")).sendKeys("test1@testmail#Com");
+        Thread.sleep(3000);
+        driver.findElement(By.xpath("//*[@id=\"send2\"]/span")).click();
+    }
+
     //search
-    @Test
+    @Test(priority = 3)
     void search() throws InterruptedException {
         WebElement m = driver.findElement(By.id("search"));
         m.sendKeys("Men tops");
@@ -69,9 +78,9 @@ public class LumaTest {
 
 
 
-    //registration and login
+
     //menus
-    //scroll
+
     //add to cart
     //filters
     //payout

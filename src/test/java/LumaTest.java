@@ -43,8 +43,17 @@ public class LumaTest {
 
     //create account
     @Test
-    void registration(){
-
+    void registration() throws InterruptedException {
+        driver.findElement(By.linkText("Create an Account")).click();
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollBy(0,300)", "");
+        driver.findElement(By.id("firstname")).sendKeys("test");
+        driver.findElement(By.id("lastname")).sendKeys("user");
+        driver.findElement(By.id("email_address")).sendKeys("test1@testmail.com");
+        driver.findElement(By.id("password")).sendKeys("test1@testmail#Com");
+        driver.findElement(By.id("password-confirmation")).sendKeys("test1@testmail#Com");
+        Thread.sleep(3000);
+        driver.findElement(By.xpath("//*[@id=\"form-validate\"]/div/div[1]/button/span")).click();
     }
 
     //search

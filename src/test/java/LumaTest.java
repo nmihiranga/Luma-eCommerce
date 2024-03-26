@@ -31,7 +31,7 @@ public class LumaTest {
     }
 
     //scroll
-    @Test(priority = 0)
+    @Test(priority = 0, enabled = false)
     void scroll() throws InterruptedException {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollTo(0,document.body.scrollHeight)");
@@ -41,7 +41,7 @@ public class LumaTest {
     }
 
     //create account
-    @Test(priority = 1)
+    @Test(priority = 1, enabled = false)
     void registration() throws InterruptedException {
         driver.findElement(By.linkText("Create an Account")).click();
         JavascriptExecutor js = (JavascriptExecutor) driver;
@@ -56,7 +56,7 @@ public class LumaTest {
     }
 
     //sign in
-    @Test(priority = 2)
+    @Test(priority = 2, enabled = false)
     void signIn() throws InterruptedException {
         driver.findElement(By.linkText("Sign In")).click();
         driver.findElement(By.id("email")).sendKeys("test1@testmail.com");
@@ -76,7 +76,14 @@ public class LumaTest {
         js.executeScript("window.scrollBy(0,450)", "");
     }
 
-
+    //add to cart
+    @Test(priority = 4)
+    void addToCart(){
+        driver.findElement(By.id("option-label-size-143-item-168")).click();
+        driver.findElement(By.id("option-label-color-93-item-57")).click();
+        //driver.findElement(By.id("qty")).sendKeys("2");
+        driver.findElement(By.cssSelector("body.page-products.page-with-filter.catalogsearch-result-index.page-layout-2columns-left:nth-child(2) div.page-wrapper:nth-child(5) main.page-main div.columns:nth-child(4) div.column.main:nth-child(1) div.search.results:nth-child(6) div.products.wrapper.grid.products-grid:nth-child(3) ol.products.list.items.product-items li.item.product.product-item:nth-child(1) div.product-item-info div.product.details.product-item-details:nth-child(2) div.product-item-inner div.product.actions.product-item-actions div.actions-primary form:nth-child(1) > button.action.tocart.primary:nth-child(4)")).click();
+    }
 
 
     //menus

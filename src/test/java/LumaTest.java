@@ -1,19 +1,9 @@
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-
-import java.time.Duration;
 import java.util.concurrent.TimeUnit;
-
-import static org.openqa.selenium.support.ui.ExpectedCondition.*;
 
 
 public class LumaTest {
@@ -31,7 +21,7 @@ public class LumaTest {
     }
 
     //scroll
-    @Test(priority = 0, enabled = false)
+    @Test(priority = 0)
     void scroll() throws InterruptedException {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollTo(0,document.body.scrollHeight)");
@@ -41,7 +31,7 @@ public class LumaTest {
     }
 
     //create account
-    @Test(priority = 1, enabled = false)
+    @Test(priority = 1)
     void registration() throws InterruptedException {
         driver.findElement(By.linkText("Create an Account")).click();
         JavascriptExecutor js = (JavascriptExecutor) driver;
@@ -61,7 +51,7 @@ public class LumaTest {
         driver.findElement(By.linkText("Sign In")).click();
         driver.findElement(By.id("email")).sendKeys("test1@testmail.com");
         driver.findElement(By.id("pass")).sendKeys("test1@testmail#Com");
-        Thread.sleep(3000);
+        Thread.sleep(1000);
         driver.findElement(By.xpath("//*[@id=\"send2\"]/span")).click();
     }
 
@@ -106,23 +96,26 @@ public class LumaTest {
 
     //payout
     @Test(priority = 6, enabled = false)
-    void payout(){
-
+    void payout() throws InterruptedException {
+        Thread.sleep(4000);
+        driver.findElement(By.xpath("//header/div[2]/div[1]/a[1]")).click();
+        driver.findElement(By.id("top-cart-btn-checkout")).click();
+        Thread.sleep(8000);
+        driver.findElement(By.xpath("//body/div[3]/main[1]/div[2]/div[1]/div[3]/div[4]/ol[1]/li[2]/div[1]/div[3]/form[1]/div[3]/div[1]/button[1]")).click();
+        // Didn't work. Couldn't find element by all the ways.
     }
 
-
-    //menus
-    //filters
-
     //logout
-    @Test
-    void logout(){
-        //
+    @Test(priority = 7)
+    void logout() throws InterruptedException {
+        driver.findElement(By.xpath("//header/div[1]/div[1]/ul[1]/li[2]/span[1]/button[1]")).click();
+        Thread.sleep(3000);
+        driver.findElement(By.linkText("Sign Out")).click();
     }
 
     //browser quit
     @AfterTest
     void tearDown(){
-        //driver.quit();
+        driver.quit();
     }
 }

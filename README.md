@@ -15,3 +15,9 @@
 ### Screenshots:
 
 ![img.png](src/magneto.png)
+
+<br>
+
+### Test Cases:
+
+![img.png](src/testCases.png)

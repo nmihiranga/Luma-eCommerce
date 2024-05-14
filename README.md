@@ -1,4 +1,4 @@
-<h1 align="center">Luma e-Commerce Store Test</h1> <br>
+<h1 align="center">Selenium with TestNG</h1> <br>
 
 <p align="center">
   The Luma (Magneto) online store demo site is designed to try Web UI element tests. Here I have tested Account creation, login, Search products, Filter products, Add to cart, and Payouts using Selenium with TestNG.
